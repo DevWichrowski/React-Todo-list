@@ -19,14 +19,22 @@ export default class List extends Component {
 			]
 		};
 	}
-	saveTitle = () => {};
+	saveTitle = (event) => {
+		let title = event.target.value;
+		console.log(`Title: ${title}`);
+		return title;
+	};
 
-	saveDescription = () => {};
+	saveDescription = (event) => {
+		let description = event.target.value;
+		console.log(`Description: ${description}`);
+		return description;
+	};
 
 	addItemToList = () => {
 		this.setState({
-			Items: [...this.state.Items, {title: 'test3', description: 'desc3'}]
-		  })
+			Items: [ ...this.state.Items, { title: this.saveTitle, description: this.saveDescription } ]
+		});
 	};
 
 	render() {
@@ -62,6 +70,7 @@ export default class List extends Component {
 						placeholder="Tytul"
 						aria-label="Tytul"
 						aria-describedby="basic-addon1"
+						onChange={this.saveTitle}
 					/>
 					<input
 						type="text"
@@ -69,6 +78,7 @@ export default class List extends Component {
 						placeholder="Opis"
 						aria-label="Opis"
 						aria-describedby="basic-addon1"
+						onChange={this.saveDescription}
 					/>
 					<button onClick={this.addItemToList}>Dodaj</button>
 				</div>
