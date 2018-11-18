@@ -16,24 +16,22 @@ export default class List extends Component {
 					title: 'tes2',
 					description: 'descriptio2'
 				}
-			]
+			],
+			tempTitle: '',
+			tempDesc: ''
 		};
 	}
 	saveTitle = (event) => {
-		let title = event.target.value;
-		console.log(`Title: ${title}`);
-		return title;
+		this.setState({ tempTitle: event.target.value });
 	};
 
 	saveDescription = (event) => {
-		let description = event.target.value;
-		console.log(`Description: ${description}`);
-		return description;
+		this.setState({ tempDescription: event.target.value });
 	};
 
 	addItemToList = () => {
 		this.setState({
-			Items: [ ...this.state.Items, { title: this.saveTitle, description: this.saveDescription } ]
+			Items: [ ...this.state.Items, { title: this.state.tempTitle, description: this.state.tempDesc } ]
 		});
 	};
 
