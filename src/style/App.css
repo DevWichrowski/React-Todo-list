@@ -1,30 +1,27 @@
-.App {
+html {
+  height: 100%;
+}
+
+html body {
+  height: 100%;
+}
+
+html #root {
+  height: 100%;
+  background: url(https://coolbackgrounds.io/images/backgrounds/disco-75c0c1ef.png);
+}
+
+html .App {
   font-family: "Titillium Web";
   text-align: center;
-  background: black;
   border: 2px solid green;
   color: white;
   width: 100%;
   height: 100%;
 }
 
-.App .todo-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.App .todo-container .list-component {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 30%;
-  height: 100%;
-}
-
-.App .todo-container .details-component {
-  width: 70%;
-  height: 100%;
+html .App .todo-container {
+  margin: 10px auto;
+  width: 40%;
 }
 /*# sourceMappingURL=App.css.map */

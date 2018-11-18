@@ -1,6 +1,8 @@
 .list {
   border: 1px solid white;
   border-radius: 5px;
-  margin: 10px 20px;
+  margin: 20% 20px;
+  background-color: #e0e0e0;
+  color: black;
 }
 /*# sourceMappingURL=List.css.map */
