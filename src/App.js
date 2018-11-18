@@ -11,7 +11,6 @@ class App extends Component {
 				<div className="todo-container">
         <div className="list-component">
 					<List />
-          a
           </div>
           <div className="details-component">
 					<Details />
