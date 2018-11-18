@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './List.css';
 import Item from '../Item/Item';
-import AddItemButton from '../AddItemButton/AddItemButton';
 
 export default class List extends Component {
 	constructor(props) {
@@ -20,10 +19,15 @@ export default class List extends Component {
 			]
 		};
 	}
+	saveTitle = () => {};
 
-	addItemToList = () =>{
-		console.log('test');
-	}
+	saveDescription = () => {};
+
+	addItemToList = () => {
+		this.setState({
+			Items: [...this.state.Items, {title: 'test3', description: 'desc3'}]
+		  })
+	};
 
 	render() {
 		let list = null;
@@ -31,7 +35,14 @@ export default class List extends Component {
 		list = (
 			<div>
 				{this.state.Items.map((item, index) => {
-					return <Item title={item.title} description={item.description} key={index} />;
+					return (
+						<Item
+							title={item.title}
+							description={item.description}
+							key={index}
+							testo={[ ...this.state.Items ]}
+						/>
+					);
 				})}
 			</div>
 		);
@@ -45,7 +56,21 @@ export default class List extends Component {
 					</div>
 				</div>
 				<div className="add-item-button">
-					<AddItemButton click={this.addItemToList} />
+					<input
+						type="text"
+						className="form-control"
+						placeholder="Tytul"
+						aria-label="Tytul"
+						aria-describedby="basic-addon1"
+					/>
+					<input
+						type="text"
+						className="form-control"
+						placeholder="Opis"
+						aria-label="Opis"
+						aria-describedby="basic-addon1"
+					/>
+					<button onClick={this.addItemToList}>Dodaj</button>
 				</div>
 			</div>
 		);
