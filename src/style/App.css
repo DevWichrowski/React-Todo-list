@@ -1,10 +1,30 @@
 .App {
   font-family: "Titillium Web";
   text-align: center;
-  background-color: black;
+  background: black;
   border: 2px solid green;
   color: white;
   width: 100%;
+  height: 100%;
+}
+
+.App .todo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.App .todo-container .list-component {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30%;
+  height: 100%;
+}
+
+.App .todo-container .details-component {
+  width: 70%;
   height: 100%;
 }
 /*# sourceMappingURL=App.css.map */
