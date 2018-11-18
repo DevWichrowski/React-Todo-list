@@ -20,13 +20,18 @@ export default class List extends Component {
 			]
 		};
 	}
+
+	addItemToList = () =>{
+		console.log('test');
+	}
+
 	render() {
 		let list = null;
 
 		list = (
 			<div>
-				{this.state.Items.map((item, map) => {
-					return <Item title={item.title} description={item.description} />;
+				{this.state.Items.map((item, index) => {
+					return <Item title={item.title} description={item.description} key={index} />;
 				})}
 			</div>
 		);
@@ -40,7 +45,7 @@ export default class List extends Component {
 					</div>
 				</div>
 				<div className="add-item-button">
-					<AddItemButton />
+					<AddItemButton click={this.addItemToList} />
 				</div>
 			</div>
 		);
