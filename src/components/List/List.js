@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './List.css';
 import Item from '../Item/Item';
-import { Modal, Button } from 'react-bootstrap/lib';
 
 export default class List extends Component {
 	constructor(props) {
@@ -11,7 +10,7 @@ export default class List extends Component {
 			Items: [
 				{
 					title: 'Test task',
-					desc: ''
+					desc: 'sdfsdfsfsdfsdfsd'
 				}
 			],
 			tempTitle: '',
@@ -33,7 +32,7 @@ export default class List extends Component {
 		});
 	};
 
-	showItem = () => {
+	showItem = (index) => {
 		this.setState({ showModal: true });
 	};
 
@@ -56,11 +55,12 @@ export default class List extends Component {
 					return (
 						<Item
 							title={item.title}
-							description={item.description}
+							description={item.desc}
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
-							show={() => this.showItem()}
+							show={() => this.showItem(index)}
 							hide={() => this.hideItem()}
+							showModal={this.state.showModal}
 						/>
 					);
 				})}
@@ -75,21 +75,7 @@ export default class List extends Component {
 						<div className="item-list">{list}</div>
 					</div>
 				</div>
-				{this.state.showModal ? (
-					<div className="static-modal">
-						<Modal.Dialog>
-							<Modal.Header>
-								<Modal.Title>Modal title</Modal.Title>
-							</Modal.Header>
-
-							<Modal.Body>One fine body...</Modal.Body>
-
-							<Modal.Footer>
-								<Button onClick={this.hideItem}>Zamknij</Button>
-							</Modal.Footer>
-						</Modal.Dialog>
-					</div>
-				) : null}
+					
 				<span id="add-icon">
 					<i
 						className="fas fa-plus-circle"
