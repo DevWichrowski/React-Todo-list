@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import './List.css';
 import Item from '../Item/Item';
+import { Modal, Button } from 'react-bootstrap/lib';
 
 export default class List extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			Items: [{
-				title: 'Test task',
-				desc: ''
-			}],
+			Items: [
+				{
+					title: 'Test task',
+					desc: ''
+				}
+			],
 			tempTitle: '',
-			tempDesc: ''
+			tempDesc: '',
+			showModal: false
 		};
 	}
 	saveTitle = (event) => {
@@ -29,11 +33,19 @@ export default class List extends Component {
 		});
 	};
 
+	showItem = () => {
+		this.setState({ showModal: true });
+	};
+
+	hideItem = () => {
+		this.setState({ showModal: false });
+	};
+
 	deleteItemFromList = (index) => {
 		const listArray = this.state.Items;
 		listArray.splice(index, 1);
-		this.setState({Items: listArray});
-	}
+		this.setState({ Items: listArray });
+	};
 
 	render() {
 		let list = null;
@@ -47,6 +59,8 @@ export default class List extends Component {
 							description={item.description}
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
+							show={() => this.showItem()}
+							hide={() => this.hideItem()}
 						/>
 					);
 				})}
@@ -61,6 +75,21 @@ export default class List extends Component {
 						<div className="item-list">{list}</div>
 					</div>
 				</div>
+				{this.state.showModal ? (
+					<div className="static-modal">
+						<Modal.Dialog>
+							<Modal.Header>
+								<Modal.Title>Modal title</Modal.Title>
+							</Modal.Header>
+
+							<Modal.Body>One fine body...</Modal.Body>
+
+							<Modal.Footer>
+								<Button onClick={this.hideItem}>Zamknij</Button>
+							</Modal.Footer>
+						</Modal.Dialog>
+					</div>
+				) : null}
 				<span id="add-icon">
 					<i
 						className="fas fa-plus-circle"
