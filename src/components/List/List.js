@@ -7,7 +7,10 @@ export default class List extends Component {
 		super(props);
 
 		this.state = {
-			Items: [],
+			Items: [{
+				title: 'Test task',
+				desc: ''
+			}],
 			tempTitle: '',
 			tempDesc: ''
 		};
@@ -26,6 +29,12 @@ export default class List extends Component {
 		});
 	};
 
+	deleteItemFromList = (index) => {
+		const listArray = this.state.Items;
+		listArray.splice(index, 1);
+		this.setState({Items: listArray});
+	}
+
 	render() {
 		let list = null;
 
@@ -37,7 +46,7 @@ export default class List extends Component {
 							title={item.title}
 							description={item.description}
 							key={index}
-							testo={[ ...this.state.Items ]}
+							delete={() => this.deleteItemFromList(index)}
 						/>
 					);
 				})}
@@ -53,12 +62,12 @@ export default class List extends Component {
 					</div>
 				</div>
 				<span id="add-icon">
-				<i
-					className="fas fa-plus-circle"
-					data-toggle="modal"
-					data-target="#exampleModal"
-					data-whatever="@mdo"
-				/>
+					<i
+						className="fas fa-plus-circle"
+						data-toggle="modal"
+						data-target="#exampleModal"
+						data-whatever="@mdo"
+					/>
 				</span>
 				<div
 					className="modal fade"
@@ -84,7 +93,12 @@ export default class List extends Component {
 										<label htmlFor="tytul" className="col-form-label">
 											Tytul:
 										</label>
-										<input type="text" className="form-control" id="tytul" onChange={this.saveTitle} />
+										<input
+											type="text"
+											className="form-control"
+											id="tytul"
+											onChange={this.saveTitle}
+										/>
 									</div>
 									<div className="form-group">
 										<label htmlFor="description" className="col-form-label">
@@ -105,7 +119,6 @@ export default class List extends Component {
 								<button type="button" className="btn btn-primary" onClick={this.addItemToList}>
 									Dodaj task
 								</button>
-								
 							</div>
 						</div>
 					</div>
