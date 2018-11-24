@@ -32,14 +32,6 @@ export default class List extends Component {
 		});
 	};
 
-	showItem = (index) => {
-		this.setState({ showModal: true });
-	};
-
-	hideItem = () => {
-		this.setState({ showModal: false });
-	};
-
 	deleteItemFromList = (index) => {
 		const listArray = this.state.Items;
 		listArray.splice(index, 1);
@@ -58,9 +50,6 @@ export default class List extends Component {
 							description={item.desc}
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
-							show={() => this.showItem(index)}
-							hide={() => this.hideItem()}
-							showModal={this.state.showModal}
 						/>
 					);
 				})}
@@ -75,7 +64,7 @@ export default class List extends Component {
 						<div className="item-list">{list}</div>
 					</div>
 				</div>
-					
+
 				<span id="add-icon">
 					<i
 						className="fas fa-plus-circle"

@@ -1,12 +1,11 @@
 import React from 'react';
 import './Item.css';
-import { Modal, Button } from 'react-bootstrap/lib';
 
 export default function Item(props) {
 	return (
 		<div className="item">
 			{props.title}
-			<button className="btn btn-success" onClick={props.show}>
+			<button className="btn btn-success" data-toggle="modal" data-target="#lookModal" onClick={props.show}>
 				Look
 			</button>
 			<button className="btn btn-primary">Edit</button>
@@ -14,21 +13,40 @@ export default function Item(props) {
 				Delete
 			</button>
 
-			{props.showModal ? (
-				<div className="static-modal">
-					<Modal.Dialog>
-						<Modal.Header>
-							<Modal.Title>{props.title}</Modal.Title>
-						</Modal.Header>
-
-						<Modal.Body>{props.description}</Modal.Body>
-
-						<Modal.Footer>
-							<Button onClick={props.hide}>Zamknij</Button>
-						</Modal.Footer>
-					</Modal.Dialog>
+			<div>
+				<div
+					className="modal fade"
+					id="lookModal"
+					tabIndex="-1"
+					role="dialog"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true"
+				>
+					<div className="modal-dialog" role="document">
+						<div className="modal-content">
+							<div className="modal-header">
+								<h5 className="modal-title" id="exampleModalLabel">
+									{props.title}
+								</h5>
+								<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div className="modal-body">{props.description}</div>
+							<div className="modal-footer">
+								<button
+									type="button"
+									className="btn btn-secondary"
+									data-dismiss="modal"
+									onClick={props.hide}
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
-			) : null}
+			</div>
 		</div>
 	);
 }
