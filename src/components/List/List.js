@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './List.css';
 import Item from '../Item/Item';
-import { Button, Modal } from 'react-bootstrap';
+import AddButton from '../AddButton/AddButton';
 
 export default class List extends Component {
 	constructor(props) {
@@ -20,7 +20,7 @@ export default class List extends Component {
 			],
 			tempTitle: '',
 			tempDesc: '',
-			showAddModal: false,
+			showAddModal: false
 		};
 	}
 	saveTitle = (event) => {
@@ -81,28 +81,16 @@ export default class List extends Component {
 						<div className="item-list">{list}</div>
 					</div>
 				</div>
-				<span id="add-icon">
-					<i className="fas fa-plus-circle" onClick={this.showAddModal} />
-				</span>
-				{this.state.showAddModal ? (
-					<div className="static-modal">
-						<Modal.Dialog>
-							<Modal.Header>
-								<Modal.Title>New task title</Modal.Title>
-							</Modal.Header>
-							<input type="text" className="form-control" onChange={this.saveTitle} />
-							<Modal.Body>Task description</Modal.Body>
-
-							<textarea type="text" className="form-control" onChange={this.saveDescription} />
-							<Modal.Footer>
-								<Button onClick={this.closeAddModal}>Close</Button>
-								<Button bsStyle="primary" onClick={this.addItemToList}>
-									Add task
-								</Button>
-							</Modal.Footer>
-						</Modal.Dialog>
-					</div>
-				) : null}
+				<div>
+					<AddButton
+						handlerAddModal={this.showAddModal}
+						showAddModal={this.state.showAddModal}
+						closeAddModal={this.closeAddModal}
+						saveTitle={this.saveTitle}
+						saveDescription={this.saveDescription}
+						addItemToList={this.addItemToList}
+					/>
+				</div>
 			</div>
 		);
 	}
