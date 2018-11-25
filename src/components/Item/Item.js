@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Item.css';
 import { Modal, Button } from 'react-bootstrap';
+import LookAtItem from '../LookAtItem/LookAtItem';
 
 class Item extends Component {
 	constructor(props) {
@@ -40,23 +41,12 @@ class Item extends Component {
 						Delete
 					</button>
 				</div>
-				<div>
-					{this.state.modal ? (
-						<div className="static-modal">
-							<Modal.Dialog>
-								<Modal.Header>
-									<Modal.Title>{this.props.title}</Modal.Title>
-								</Modal.Header>
-
-								<Modal.Body>{this.props.description}</Modal.Body>
-
-								<Modal.Footer>
-									<Button onClick={this.handleModal}>Close</Button>
-								</Modal.Footer>
-							</Modal.Dialog>
-						</div>
-					) : null}
-				</div>
+				<LookAtItem
+					modal={this.state.modal}
+					showModalHandler={this.handleModal}
+					title={this.props.title}
+					description={this.props.description}
+				/>
 				<div>
 					{this.state.editItem ? (
 						<div className="static-modal">
@@ -78,7 +68,7 @@ class Item extends Component {
 								<label htmlFor="new-title">Please enter new title:</label>
 								<input type="text" className="form-control" id="new-title" />
 								<label htmlFor="new-description">Please enter new description:</label>
-								<textarea id="new-description"/>
+								<textarea id="new-description" />
 								<Modal.Footer>
 									<Button onClick={this.handleEditItem}>Close</Button>
 									<Button bsStyle="primary">Save changes</Button>
