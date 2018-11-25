@@ -7,12 +7,17 @@ class Item extends Component {
 		super(props);
 
 		this.state = {
-			modal: false
+			modal: false,
+			editItem: false
 		};
 	}
 
 	handleModal = () => {
 		this.setState({ modal: !this.state.modal });
+	};
+
+	handleEditItem = () => {
+		this.setState({ editItem: !this.state.editItem });
 	};
 
 	render() {
@@ -28,7 +33,7 @@ class Item extends Component {
 					>
 						Look
 					</button>
-					<button className="btn btn-primary">Edit</button>
+					<button className="btn btn-primary" onClick={this.handleEditItem}>Edit</button>
 					<button className="btn btn-danger" onClick={this.props.delete}>
 						Delete
 					</button>
@@ -45,6 +50,24 @@ class Item extends Component {
 
 								<Modal.Footer>
 									<Button onClick={this.handleModal}>Close</Button>
+								</Modal.Footer>
+							</Modal.Dialog>
+						</div>
+					) : null}
+				</div>
+				<div>
+					{this.state.editItem ? (
+						<div className="static-modal">
+							<Modal.Dialog>
+								<Modal.Header>
+									<Modal.Title>Please enter new title below:</Modal.Title>
+								</Modal.Header>
+								<input type="text" className="form-control"/>
+								<Modal.Body>Please enter new description below:</Modal.Body>
+									<textarea />
+								<Modal.Footer>
+									<Button onClick={this.handleEditItem}>Close</Button>
+									<Button bsStyle="primary">Save changes</Button>
 								</Modal.Footer>
 							</Modal.Dialog>
 						</div>
