@@ -10,12 +10,12 @@ export default class List extends Component {
 		this.state = {
 			Items: [
 				{
-					title: 'Test task',
-					desc: 'sdfsdfsfsdfsdfsd'
+					title: 'Go shopping',
+					desc: 'Go shopping and buy new shoes and vegetables'
 				},
 				{
-					title: 'test 2',
-					desc: 'description2'
+					title: 'Clear car',
+					desc: 'Remember to clear car and take care about wheels'
 				}
 			],
 			tempTitle: '',
@@ -49,10 +49,6 @@ export default class List extends Component {
 
 	closeAddModal = () => {
 		this.setState({ showAddModal: false });
-	};
-
-	showTooltip = (index) => {
-		this.setState({ tooltip: !this.state.tooltip });
 	};
 
 	render() {

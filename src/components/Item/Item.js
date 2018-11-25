@@ -29,7 +29,6 @@ class Item extends Component {
 					<button
 						className="btn btn-success"
 						data-toggle="modal"
-						data-target="#lookModal"
 						onClick={this.handleModal}
 					>
 						Look
