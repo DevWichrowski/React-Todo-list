@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Item.css';
-import { Modal, Button } from 'react-bootstrap';
 import LookAtItem from '../LookAtItem/LookAtItem';
+import EditItem from '../EditItem/EditItem';
 
 class Item extends Component {
 	constructor(props) {
@@ -42,43 +42,15 @@ class Item extends Component {
 					title={this.props.title}
 					description={this.props.description}
 				/>
-				<div>
-					{this.state.editItem ? (
-						<div className="static-modal">
-							<Modal.Dialog>
-								<Modal.Header>
-									<Modal.Title>Edit task</Modal.Title>
-								</Modal.Header>
-								<div className="current-task">
-									<p>
-										<strong>Current title: </strong>
-									</p>
-									<p>{this.props.title}</p>
-									<p>
-										<strong>Current description:</strong>
-									</p>
-									<p>{this.props.description}</p>
-								</div>
-								<Modal.Body>Please enter new description below:</Modal.Body>
-								<label htmlFor="new-title">Please enter new title:</label>
-								<input
-									type="text"
-									className="form-control"
-									id="new-title"
-									onChange={this.props.saveTitle}
-								/>
-								<label htmlFor="new-description">Please enter new description:</label>
-								<textarea id="new-description" onChange={this.props.saveDescription} />
-								<Modal.Footer>
-									<Button onClick={this.handleEditItem}>Close</Button>
-									<Button bsStyle="primary" onClick={this.props.editItem}>
-										Save changes
-									</Button>
-								</Modal.Footer>
-							</Modal.Dialog>
-						</div>
-					) : null}
-				</div>
+				<EditItem 
+				edit={this.state.editItem}
+				title={this.props.title}
+				description={this.props.description}
+				saveTitle={this.props.saveTitle}
+				saveDescription={this.props.saveDescription}
+				editItem={this.props.editItem}
+				handleEditItem={this.handleEditItem}
+				/>
 			</div>
 		);
 	}
