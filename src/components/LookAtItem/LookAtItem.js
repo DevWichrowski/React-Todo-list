@@ -1,9 +1,10 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import './LookAtItem.css';
 
 export default function LookAtItem(props) {
 	return (
-		<div>
+		<div className="look-at-item">
 			{props.modal ? (
 				<div className="static-modal">
 					<Modal.Dialog>

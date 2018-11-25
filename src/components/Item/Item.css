@@ -4,6 +4,8 @@
   border-radius: 10px;
   margin: 10px auto;
   cursor: pointer;
+  white-space: normal;
+  word-break: break-all;
 }
 
 .current-task {

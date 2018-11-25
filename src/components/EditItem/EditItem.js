@@ -1,9 +1,10 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap';
+import './EditItem.css'
 
 export default function EditItem(props) {
   return (
-    <div>
+    <div className="edit-item">
     {props.edit ? (
         <div className="static-modal">
             <Modal.Dialog>
@@ -27,9 +28,10 @@ export default function EditItem(props) {
                     className="form-control"
                     id="new-title"
                     onChange={props.saveTitle}
+                    maxLength="75"
                 />
                 <label htmlFor="new-description">Please enter new description:</label>
-                <textarea id="new-description" onChange={props.saveDescription} />
+                <textarea id="new-description" onChange={props.saveDescription} maxLength="1000"/>
                 <Modal.Footer>
                     <Button onClick={props.handleEditItem}>Close</Button>
                     <Button bsStyle="primary" onClick={props.editItem}>

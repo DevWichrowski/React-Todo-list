@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAA;EACT,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,SAAS;CACxB",
+    "sources": [
+        "LookAtItem.scss"
+    ],
+    "names": [],
+    "file": "LookAtItem.css"
+}
