@@ -21,7 +21,6 @@ export default class List extends Component {
 			tempTitle: '',
 			tempDesc: '',
 			showAddModal: false,
-			tooltip: false
 		};
 	}
 	saveTitle = (event) => {
@@ -68,9 +67,6 @@ export default class List extends Component {
 							description={item.desc}
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
-							lookModal={this.state.showLookModal}
-							tooltip={this.state.tooltip}
-							showTooltip={() => this.showTooltip(index)}
 						/>
 					);
 				})}
