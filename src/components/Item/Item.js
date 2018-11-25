@@ -33,7 +33,9 @@ class Item extends Component {
 					>
 						Look
 					</button>
-					<button className="btn btn-primary" onClick={this.handleEditItem}>Edit</button>
+					<button className="btn btn-primary" onClick={this.handleEditItem}>
+						Edit
+					</button>
 					<button className="btn btn-danger" onClick={this.props.delete}>
 						Delete
 					</button>
@@ -60,11 +62,23 @@ class Item extends Component {
 						<div className="static-modal">
 							<Modal.Dialog>
 								<Modal.Header>
-									<Modal.Title>Please enter new title below:</Modal.Title>
+									<Modal.Title>Edit task</Modal.Title>
 								</Modal.Header>
-								<input type="text" className="form-control"/>
+								<div className="current-task">
+									<p>
+										<strong>Current title: </strong>
+									</p>
+									<p>{this.props.title}</p>
+									<p>
+										<strong>Current description:</strong>
+									</p>
+									<p>{this.props.description}</p>
+								</div>
 								<Modal.Body>Please enter new description below:</Modal.Body>
-									<textarea />
+								<label htmlFor="new-title">Please enter new title:</label>
+								<input type="text" className="form-control" id="new-title" />
+								<label htmlFor="new-description">Please enter new description:</label>
+								<textarea id="new-description"/>
 								<Modal.Footer>
 									<Button onClick={this.handleEditItem}>Close</Button>
 									<Button bsStyle="primary">Save changes</Button>

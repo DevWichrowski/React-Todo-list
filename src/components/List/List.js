@@ -93,7 +93,7 @@ export default class List extends Component {
 							<input type="text" className="form-control" onChange={this.saveTitle} />
 							<Modal.Body>Task description</Modal.Body>
 
-							<textarea type="text" className="form-control" maxlength="50" onChange={this.saveDescription} />
+							<textarea type="text" className="form-control" onChange={this.saveDescription} />
 							<Modal.Footer>
 								<Button onClick={this.closeAddModal}>Close</Button>
 								<Button bsStyle="primary" onClick={this.addItemToList}>
