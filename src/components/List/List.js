@@ -21,7 +21,7 @@ export default class List extends Component {
 			tempTitle: '',
 			tempDesc: '',
 			showAddModal: false,
-			showLookModal: false
+			tooltip: false
 		};
 	}
 	saveTitle = (event) => {
@@ -52,13 +52,8 @@ export default class List extends Component {
 		this.setState({ showAddModal: false });
 	};
 
-	showLookModal = () =>{
-		this.setState({ showLookModal: true });
-	}
-
-
-	closeLookModal = () => {
-		this.setState({ showLookModal: false });
+	showTooltip = (index) => {
+		this.setState({ tooltip: !this.state.tooltip });
 	};
 
 	render() {
@@ -74,8 +69,8 @@ export default class List extends Component {
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
 							lookModal={this.state.showLookModal}
-							showLookModal={this.showLookModal}
-							closeLookModal={this.closeLookModal}
+							tooltip={this.state.tooltip}
+							showTooltip={() => this.showTooltip(index)}
 						/>
 					);
 				})}
@@ -102,10 +97,12 @@ export default class List extends Component {
 							<input type="text" className="form-control" onChange={this.saveTitle} />
 							<Modal.Body>Task description</Modal.Body>
 
-							<textarea type="text" className="form-control" onChange={this.saveDescription}/>
+							<textarea type="text" className="form-control" onChange={this.saveDescription} />
 							<Modal.Footer>
 								<Button onClick={this.closeAddModal}>Close</Button>
-								<Button bsStyle="primary" onClick={this.addItemToList}>Add task</Button>
+								<Button bsStyle="primary" onClick={this.addItemToList}>
+									Add task
+								</Button>
 							</Modal.Footer>
 						</Modal.Dialog>
 					</div>
