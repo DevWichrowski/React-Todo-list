@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './List.css';
 import Item from '../Item/Item';
+import { Button, Modal } from 'react-bootstrap';
 
 export default class List extends Component {
 	constructor(props) {
@@ -11,11 +12,16 @@ export default class List extends Component {
 				{
 					title: 'Test task',
 					desc: 'sdfsdfsfsdfsdfsd'
+				},
+				{
+					title: 'test 2',
+					desc: 'description2'
 				}
 			],
 			tempTitle: '',
 			tempDesc: '',
-			showModal: false
+			showAddModal: false,
+			showLookModal: false
 		};
 	}
 	saveTitle = (event) => {
@@ -23,7 +29,7 @@ export default class List extends Component {
 	};
 
 	saveDescription = (event) => {
-		this.setState({ tempDescription: event.target.value });
+		this.setState({ tempDesc: event.target.value });
 	};
 
 	addItemToList = () => {
@@ -38,6 +44,23 @@ export default class List extends Component {
 		this.setState({ Items: listArray });
 	};
 
+	showAddModal = () => {
+		this.setState({ showAddModal: true });
+	};
+
+	closeAddModal = () => {
+		this.setState({ showAddModal: false });
+	};
+
+	showLookModal = () =>{
+		this.setState({ showLookModal: true });
+	}
+
+
+	closeLookModal = () => {
+		this.setState({ showLookModal: false });
+	};
+
 	render() {
 		let list = null;
 
@@ -50,6 +73,9 @@ export default class List extends Component {
 							description={item.desc}
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
+							lookModal={this.state.showLookModal}
+							showLookModal={this.showLookModal}
+							closeLookModal={this.closeLookModal}
 						/>
 					);
 				})}
@@ -64,69 +90,26 @@ export default class List extends Component {
 						<div className="item-list">{list}</div>
 					</div>
 				</div>
-
 				<span id="add-icon">
-					<i
-						className="fas fa-plus-circle"
-						data-toggle="modal"
-						data-target="#exampleModal"
-						data-whatever="@mdo"
-					/>
+					<i className="fas fa-plus-circle" onClick={this.showAddModal} />
 				</span>
-				<div
-					className="modal fade"
-					id="exampleModal"
-					tabIndex="-1"
-					role="dialog"
-					aria-labelledby="exampleModalLabel"
-					aria-hidden="true"
-				>
-					<div className="modal-dialog" role="document">
-						<div className="modal-content">
-							<div className="modal-header">
-								<h5 className="modal-title" id="exampleModalLabel">
-									Dodaj swój nowy task
-								</h5>
-								<button type="button" className="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div className="modal-body">
-								<form>
-									<div className="form-group">
-										<label htmlFor="tytul" className="col-form-label">
-											Tytul:
-										</label>
-										<input
-											type="text"
-											className="form-control"
-											id="tytul"
-											onChange={this.saveTitle}
-										/>
-									</div>
-									<div className="form-group">
-										<label htmlFor="description" className="col-form-label">
-											Opis:
-										</label>
-										<textarea
-											className="form-control"
-											id="description"
-											onChange={this.saveDescription}
-										/>
-									</div>
-								</form>
-							</div>
-							<div className="modal-footer">
-								<button type="button" className="btn btn-secondary" data-dismiss="modal">
-									Zamknij
-								</button>
-								<button type="button" className="btn btn-primary" onClick={this.addItemToList}>
-									Dodaj task
-								</button>
-							</div>
-						</div>
+				{this.state.showAddModal ? (
+					<div className="static-modal">
+						<Modal.Dialog>
+							<Modal.Header>
+								<Modal.Title>New task title</Modal.Title>
+							</Modal.Header>
+							<input type="text" className="form-control" onChange={this.saveTitle} />
+							<Modal.Body>Task description</Modal.Body>
+
+							<textarea type="text" className="form-control" onChange={this.saveDescription}/>
+							<Modal.Footer>
+								<Button onClick={this.closeAddModal}>Close</Button>
+								<Button bsStyle="primary" onClick={this.addItemToList}>Add task</Button>
+							</Modal.Footer>
+						</Modal.Dialog>
 					</div>
-				</div>
+				) : null}
 			</div>
 		);
 	}
