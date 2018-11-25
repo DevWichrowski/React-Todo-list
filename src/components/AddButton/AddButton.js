@@ -3,9 +3,6 @@ import { Button, Modal } from 'react-bootstrap';
 import './AddButton.css';
 
 class AddButton extends Component {
-	constructor(props) {
-		super(props);
-	}
 	render() {
 		return (
 			<div>

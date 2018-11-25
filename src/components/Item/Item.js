@@ -26,11 +26,7 @@ class Item extends Component {
 			<div>
 				<div className="item">
 					{this.props.title}
-					<button
-						className="btn btn-success"
-						data-toggle="modal"
-						onClick={this.handleModal}
-					>
+					<button className="btn btn-success" data-toggle="modal" onClick={this.handleModal}>
 						Look
 					</button>
 					<button className="btn btn-primary" onClick={this.handleEditItem}>
@@ -65,12 +61,19 @@ class Item extends Component {
 								</div>
 								<Modal.Body>Please enter new description below:</Modal.Body>
 								<label htmlFor="new-title">Please enter new title:</label>
-								<input type="text" className="form-control" id="new-title" />
+								<input
+									type="text"
+									className="form-control"
+									id="new-title"
+									onChange={this.props.saveTitle}
+								/>
 								<label htmlFor="new-description">Please enter new description:</label>
-								<textarea id="new-description" />
+								<textarea id="new-description" onChange={this.props.saveDescription} />
 								<Modal.Footer>
 									<Button onClick={this.handleEditItem}>Close</Button>
-									<Button bsStyle="primary">Save changes</Button>
+									<Button bsStyle="primary" onClick={this.props.editItem}>
+										Save changes
+									</Button>
 								</Modal.Footer>
 							</Modal.Dialog>
 						</div>

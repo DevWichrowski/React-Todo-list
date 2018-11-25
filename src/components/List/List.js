@@ -10,10 +10,12 @@ export default class List extends Component {
 		this.state = {
 			Items: [
 				{
+					id: 1,
 					title: 'Go shopping',
 					desc: 'Go shopping and buy new shoes and vegetables'
 				},
 				{
+					id: 2,
 					title: 'Clear car',
 					desc: 'Remember to clear car and take care about wheels'
 				}
@@ -23,6 +25,10 @@ export default class List extends Component {
 			showAddModal: false
 		};
 	}
+	idGenerator = () => {
+		return '_' + Math.random().toString(36).substr(2, 9);
+	};
+
 	saveTitle = (event) => {
 		this.setState({ tempTitle: event.target.value });
 	};
@@ -33,8 +39,28 @@ export default class List extends Component {
 
 	addItemToList = () => {
 		this.setState({
-			Items: [ ...this.state.Items, { title: this.state.tempTitle, desc: this.state.tempDesc } ]
+			Items: [
+				...this.state.Items,
+				{ id: this.idGenerator, title: this.state.tempTitle, desc: this.state.tempDesc }
+			]
 		});
+	};
+
+	editItem = (id) => {
+		const itemIndex = this.state.Items.findIndex((item) => {
+			return item.id === id;
+		});
+		const itemObject = {
+			...this.state.Items[itemIndex]
+		};
+
+		itemObject.title = this.state.tempTitle;
+		itemObject.desc = this.state.tempDesc;
+
+		const items = [ ...this.state.Items ];
+		items[itemIndex] = itemObject;
+
+		this.setState({ Items: items });
 	};
 
 	deleteItemFromList = (index) => {
@@ -63,6 +89,9 @@ export default class List extends Component {
 							description={item.desc}
 							key={index}
 							delete={() => this.deleteItemFromList(index)}
+							saveTitle={this.saveTitle}
+							saveDescription={this.saveDescription}
+							editItem={() => this.editItem(item.id)}
 						/>
 					);
 				})}
