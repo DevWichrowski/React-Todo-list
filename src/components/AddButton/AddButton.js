@@ -14,7 +14,7 @@ export default function AddButton(props) {
 						<Modal.Header>
 							<Modal.Title>New task title</Modal.Title>
 						</Modal.Header>
-						<input type="text" className="form-control" onChange={props.saveTitle} maxLength="75"/>
+						<input type="text" className="form-control" onChange={props.saveTitle} maxLength="56"/>
 						<Modal.Body>Task description</Modal.Body>
 
 						<textarea type="text" className="form-control" onChange={props.saveDescription} maxLength="1000"/>
