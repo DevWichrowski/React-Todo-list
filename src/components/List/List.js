@@ -42,7 +42,7 @@ export default class List extends Component {
 			this.setState({
 				Items: [
 					...this.state.Items,
-					{ id: this.idGenerator, title: this.state.tempTitle, desc: this.state.tempDesc }
+					{ id: this.idGenerator(), title: this.state.tempTitle, desc: this.state.tempDesc }
 				]
 			});
 		}
@@ -61,9 +61,7 @@ export default class List extends Component {
 
 		const items = [ ...this.state.Items ];
 		items[itemIndex] = itemObject;
-		if (this.state.tempTitle !== '') {
-			this.setState({ Items: items });
-		}
+		this.setState({ Items: items });
 	};
 
 	deleteItemFromList = (index) => {
@@ -95,7 +93,6 @@ export default class List extends Component {
 							saveTitle={this.saveTitle}
 							saveDescription={this.saveDescription}
 							editItem={() => this.editItem(item.id)}
-							tempTitle={this.state.tempTitle}
 						/>
 					);
 				})}
