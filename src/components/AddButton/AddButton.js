@@ -14,15 +14,26 @@ export default function AddButton(props) {
 						<Modal.Header>
 							<Modal.Title>New task title</Modal.Title>
 						</Modal.Header>
-						<input type="text" className="form-control" onChange={props.saveTitle} maxLength="56"/>
+						<input type="text" className="form-control" onChange={props.saveTitle} maxLength="56" />
 						<Modal.Body>Task description</Modal.Body>
 
-						<textarea type="text" className="form-control" onChange={props.saveDescription} maxLength="1000"/>
+						<textarea
+							type="text"
+							className="form-control"
+							onChange={props.saveDescription}
+							maxLength="1000"
+						/>
 						<Modal.Footer>
 							<Button onClick={props.closeAddModal}>Close</Button>
-							<Button bsStyle="primary" onClick={props.addItemToList}>
-								Add task
-							</Button>
+							{props.tempTitle !== '' ? (
+								<Button bsStyle="primary" onClick={props.addItemToList}>
+									Add task
+								</Button>
+							) : (
+								<Button bsStyle="primary" disabled>
+									Add task
+								</Button>
+							)}
 						</Modal.Footer>
 					</Modal.Dialog>
 				</div>

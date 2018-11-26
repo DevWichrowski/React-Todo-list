@@ -38,12 +38,14 @@ export default class List extends Component {
 	};
 
 	addItemToList = () => {
-		this.setState({
-			Items: [
-				...this.state.Items,
-				{ id: this.idGenerator, title: this.state.tempTitle, desc: this.state.tempDesc }
-			]
-		});
+		if (this.state.tempTitle !== '') {
+			this.setState({
+				Items: [
+					...this.state.Items,
+					{ id: this.idGenerator, title: this.state.tempTitle, desc: this.state.tempDesc }
+				]
+			});
+		}
 	};
 
 	editItem = (id) => {
@@ -59,8 +61,9 @@ export default class List extends Component {
 
 		const items = [ ...this.state.Items ];
 		items[itemIndex] = itemObject;
-
-		this.setState({ Items: items });
+		if (this.state.tempTitle !== '') {
+			this.setState({ Items: items });
+		}
 	};
 
 	deleteItemFromList = (index) => {
@@ -92,6 +95,7 @@ export default class List extends Component {
 							saveTitle={this.saveTitle}
 							saveDescription={this.saveDescription}
 							editItem={() => this.editItem(item.id)}
+							tempTitle={this.state.tempTitle}
 						/>
 					);
 				})}
@@ -111,6 +115,7 @@ export default class List extends Component {
 						handlerAddModal={this.showAddModal}
 						showAddModal={this.state.showAddModal}
 						closeAddModal={this.closeAddModal}
+						tempTitle={this.state.tempTitle}
 						saveTitle={this.saveTitle}
 						saveDescription={this.saveDescription}
 						addItemToList={this.addItemToList}

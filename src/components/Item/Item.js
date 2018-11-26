@@ -54,6 +54,7 @@ class Item extends Component {
 				saveDescription={this.props.saveDescription}
 				editItem={this.props.editItem}
 				handleEditItem={this.handleEditItem}
+				tempTitle={this.props.tempTitle}
 				/>
 			</div>
 		);
