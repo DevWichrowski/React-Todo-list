@@ -101,7 +101,7 @@ export default class List extends Component {
 			<div>
 				<div className="list">
 					<div className="list-heading">
-						<h4>Lista to-do</h4>
+						<h2>React Todo List</h2>
 						<hr />
 						<div className="item-list">{list}</div>
 					</div>

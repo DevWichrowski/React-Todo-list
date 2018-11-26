@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=AddButton.css.map */
+#add-icon {
+  font-size: 80px;
+  cursor: pointer;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-right: 150px;
+  margin-bottom: 60px;
+}
+
+#add-icon:hover {
+  font-size: 80px;
+  color: #a200ff;
+}
+/*# sourceMappingURL=AddButton.css.map */
