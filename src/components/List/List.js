@@ -61,7 +61,9 @@ export default class List extends Component {
 
 		const items = [ ...this.state.Items ];
 		items[itemIndex] = itemObject;
-		this.setState({ Items: items });
+		if (this.state.tempTitle !== '') {
+			this.setState({ Items: items });
+		}
 	};
 
 	deleteItemFromList = (index) => {
@@ -72,10 +74,15 @@ export default class List extends Component {
 
 	showAddModal = () => {
 		this.setState({ showAddModal: true });
+		this.clearTempState();
 	};
 
 	closeAddModal = () => {
 		this.setState({ showAddModal: false });
+	};
+
+	clearTempState = () => {
+		this.setState({ tempTitle: '', tempDesc: '' });
 	};
 
 	render() {
@@ -93,6 +100,8 @@ export default class List extends Component {
 							saveTitle={this.saveTitle}
 							saveDescription={this.saveDescription}
 							editItem={() => this.editItem(item.id)}
+							tempTitle={this.state.tempTitle}
+							clearTempState={this.clearTempState}
 						/>
 					);
 				})}

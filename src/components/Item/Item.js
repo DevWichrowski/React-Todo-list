@@ -19,6 +19,7 @@ class Item extends Component {
 
 	handleEditItem = () => {
 		this.setState({ editItem: !this.state.editItem });
+		{this.props.clearTempState()}
 	};
 
 	render() {
