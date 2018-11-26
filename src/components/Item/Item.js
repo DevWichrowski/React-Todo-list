@@ -25,7 +25,10 @@ class Item extends Component {
 		return (
 			<div>
 				<div className="item">
+				<div className="item-title">
 					{this.props.title}
+					</div>
+					<div className="item-buttons">
 					<button className="btn btn-success" data-toggle="modal" onClick={this.handleModal}>
 						Look
 					</button>
@@ -35,6 +38,7 @@ class Item extends Component {
 					<button className="btn btn-danger" onClick={this.props.delete}>
 						Delete
 					</button>
+					</div>
 				</div>
 				<LookAtItem
 					modal={this.state.modal}

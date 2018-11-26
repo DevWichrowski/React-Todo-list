@@ -1,11 +1,57 @@
 .item {
-  background-color: #7fd0ff;
-  border: 2px #7fd0ff solid;
-  border-radius: 10px;
+  background-color: #d8d8d8;
   margin: 10px auto;
   cursor: pointer;
   white-space: normal;
   word-break: break-all;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.item .item-title {
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 6.5px;
+}
+
+.item .item-buttons {
+  width: 300px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.item .item-buttons .btn-danger {
+  float: right;
+  height: 100%;
+  width: 33.3333%;
+  border-radius: 0;
+}
+
+.item .item-buttons .btn-primary {
+  float: right;
+  height: 100%;
+  width: 33.3333%;
+  border-radius: 0;
+}
+
+.item .item-buttons .btn-success {
+  float: right;
+  height: 100%;
+  width: 33.3333%;
+  border-radius: 0;
 }
 
 .current-task {
